@@ -1,0 +1,13 @@
+base
+ggplot2
+kableExtra
+openintro
+gridExtra
+ggmosaic
+dplyr
+knitr
+qqplotr
+plotly
+tidyr
+Ecfun
+Ecdat

@@ -1,0 +1,143 @@
+---
+title: "Passos para criar o livro2"
+author: "Gabriel Holmer Saul"
+output: html_document
+---
+
+* Baixar o repositório com os capítulos separados do github
+
+* Criar uma pasta para o livro2
+
+* Criar um projeto na pasta livro2
+
+* Copiar o arquivo _output.yml e acrescentar um bloco de código na parte superior, para adicionar o template bs4 (bootstrap 4)
+
+```
+bookdown::bs4_book:
+  includes:
+    in_header: header.html
+  theme:
+    primary: "#5b7886"
+    base_font: "Lato"
+  css: style.css
+```
+
+bookdown::bs4_book para chamar o tema; header.html conterá a funcionalidade do botão de mostrar e esconder o código, e para isso já o incluimos no header do html do livro; primary diz qual vai ser a cor tema do livro.
+
+* Se você não tem instalado o template do bootstrap 4, rode o bloco de código abaixo
+
+```
+remotes::install_github("rstudio/bslib")
+```
+
+* Se o bookdown ficar com caracteres especiais desconfigurados, rode o código abaixo
+
+```
+install.packages("downlit")
+remotes::install_github("rstudio/bookdown#1027") # A versão 1027 evita um bug com caracteres especiais
+```
+
+* No endereço `R\win-library\3.6\bookdown\templates` você deve encontrar o arquivo bs4_book.html, além de outros templates disponíveis para o bookdown. Se você quiser, pode abrir o arquivo com o bloco de notas para mudar os textos em inglês para português, por exemplo. Nessa pasta, substitua o arquivo bs4_book.html, pelo arquivo com o mesmo nome na pasta do livro2.
+
+* Use a versao 1.7.1 do openintro, qualquer outra pode dar erro (https://cran.r-project.org/src/contrib/Archive/openintro/)
+
+* Criar uma nova pasta em livro2 chamada js para armazenar o arquivo em javascript que executará a animação `hideAll.js`
+
+* Criar uma pasta com as imagens
+
+* Criar uma pasta para os bancos de dados
+
+* Separar o index do primeiro capítulo para que o index seja o prefácio bem como carregue códigos de setup para o resto do livro. Os outros capítulos precisam começar com o número correspondente ao seu capítulo 01, 02, ..., 08.
+
+* Renderize o livro com o comando `bookdown::render_book()` direto no console do R ou com o botão knit no arquivo index, pois ele tem o argumento "knit: "bookdown::render_book"" em seu yaml. Precisa estar dentro do .Rproj para funcionar.
+
+* Arquivo _bookdown.yml não pode ter aquele book_filename como argumento
+
+* Adicionando labels para todos os sub capítulos para que a aba da direita mostra em que sub capítulo o usuário está atualmente
+
+* Adicionar linha html para retornar ao site da disciplina
+
+* adicionar argumento "repo" no _output.yml para o bs4 mostrar o repositório do github
+
+> Bugs corrigidos do capítulo 1
+
+* `\@ref(dataBasics)` -> Referenciar corretamente com `{#dataBasics}` o capítulo 1.2
+
+* Mais outras 2 referencias incorretas
+
+* Diretório ch1 redundante
+
+* Mudei "x/y = NULL" nos labs para "x/y = """ para parar de dar erro
+
+* Removi um espaço a mais porque o latex considerava enumeração e isso causava uns erros estranhos para gerar o pdf
+
+> Bugs corrigidos do capítulo 2
+
+* Mais erros de typo
+
+* Falta de espaço entre as hashtags e o nome do sub capítulo
+
+* expectância -> esperança
+
+> Bugs corrigidos do capítulo 3
+
+* adicionando `data = data.frame()` como argumento em `stat_function` para sair o erro de aesthetics
+
+* mudando várias coisas no gganimate
+
+> Bugs corrigidos do capítulo 4
+
+* adicionar knitr::kable em ptEstimatesYrbssActive e fourHTScenarios
+
+* ValueOneSidedSleepStudyExplained -> pValueOneSidedSleepStudyExplained
+
+* Qual é a altura média dos alunos do ensino médio do YRBSS?? -> ?
+
+* Arquivo ch4 reduntante
+
+> Bugs corrigidos do capítulo 5
+
+* adicionando anovaSummaryTableForMidtermData na chuck logo abaixo
+
+> Bugs corrigidos do capítulo 6
+
+* resultsForCPRStudyInSmallSampleSectionFake1 -> tirando o 1 do fim
+
+* adicionar um caption na tabela para ela poder ser referenciada knitr::kable(desc6, align = 'c', caption = "Distribuição observada dos dias de espera até que ocorra um dia de negociação positivo")
+
+* Avaliando a qualidade do ajuste para uma distribuição (qui-quadrado)
+
+> Bugs corrigidos do capítulo 7
+
+* marioKartNewUsedRegrSummary de fig para tab
+
+* removendo um \var de uma fórmula em latex da variável cond_nova
+
+* trocar possum$ por apenas o nome da variável nas chunks scattHeadLTotalL e scattHeadLTotalLLine
+
+
+> Bugs corrigidos do capítulo 8
+
+* Mostrando só os 3 últimos digitos de marioKartMultipleRegressionModelAllButDuration
+
+> Específico para o pdf
+
+* example e exercise -> echo=T
+
+* Use "%>% column_spec(1:length(colnames(table4)), width = "15em")" do kableextra pra ajustar a largura das tabelas. Algumas tabelas muito largas ficam para fora da página
+
+* Não usar símbolos como $ e _ como caption de tabela e figuras, pois vai dar erro com o latex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
