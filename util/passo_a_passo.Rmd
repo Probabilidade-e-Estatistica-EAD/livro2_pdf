@@ -4,6 +4,8 @@ author: "Gabriel Holmer Saul"
 output: html_document
 ---
 
+* Leia o tutorial https://www.r-bloggers.com/2021/08/announcing-bookdown-v0-23/
+
 * Baixar o repositório com os capítulos separados do github
 
 * Criar uma pasta para o livro2
